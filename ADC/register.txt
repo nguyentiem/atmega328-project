@@ -1,0 +1,36 @@
+ADMUX
+0x7C	REFS1	REFS0	ADLAR	–	MUX3	MUX2	MUX1	MUX0
+REFS[1:0]
+0	0	AREF, Internal VREF turned off
+0	1	AVCC with external capacitor at AREF pin
+1	0	Reserved
+1	1	Internal 1.1V Voltage Reference with external capacitor at AREF pin
+
+ ADLAR: ADC Left Adjust Result
+ Bits 3:0 – MUX[3:0]: Analog Channel Selection Bits chọn pin analog từ 0->8
+ 
+ADCSRA – ADC Control and Status Register A
+0x7A	ADEN	ADSC	ADATE	ADIF	ADIE	ADPS2	ADPS1	ADPS0
+ADEN: ADC Enable
+ADSC: ADC Start Conversion
+ADATE: ADC auto trigger  The trigger source is selected by setting the ADC Trigger Select bits, ADTS inADCSRB.
+ADIF: ADC Interrupt Flag
+ADIE: ADC Interrupt Enable
+ADC Prescaler Select Bits These bits determine the division factor between the system clock frequency and the input clock to the ADC.
+ADCL and ADCH – The ADC Data Register
+
+ADCSRB – ADC Control and Status Register B
+       –	ACME	–	–	–	ADTS2	ADTS1	ADTS0
+ADTS[2:0]: ADC Auto Trigger Source
+If ADATE in ADCSRA is written to one, the value of these bits selects which source will trigger an ADC conversion.
+ADTS2	ADTS1	ADTS0	Trigger Source
+0	0	0	Free Running mode
+0	0	1	Analog Comparator
+0	1	0	External Interrupt Request 0
+0	1	1	Timer/Counter0 Compare Match A
+1	0	0	Timer/Counter0 Overflow
+1	0	1	Timer/Counter1 Compare Match B
+1	1	0	Timer/Counter1 Overflow
+1	1	1	Timer/Counter1 Capture Event
+
+
